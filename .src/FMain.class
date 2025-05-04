@@ -1,0 +1,62 @@
+' Gambas class file
+
+' Copyright (C) 2025 Murilo Gomes Julio
+' SPDX-License-Identifier: GPL-2.0-only
+
+' Mestre da Info
+' Site: https://www.mestredainfo.com.br
+
+Public Sub btnCriar_Click()
+  If Exist(txtApp.Text) Then 
+    If Exist(User.Home & "/.config/autostart/") = False Then 
+      Shell("mkdir -p " & User.Home & "/.config/autostart/")
+    Endif
+    
+    Dim sNomeApp As String = File.BaseName(txtApp.Text)
+    Dim sDesktop As String = "[Desktop Entry]" & gb.NewLine 
+    If txtArgs.Text = "" Then 
+      sDesktop &= "Exec=" & txtApp.Text & gb.NewLine
+    Else 
+      sDesktop &= "Exec=" & txtApp.Text & " " & txtArgs.Text & gb.NewLine
+    Endif 
+    sDesktop &= "Name=" & sNomeApp & gb.NewLine
+    If chkTerminal.Value Then 
+      sDesktop &= "Terminal=true" & gb.NewLine
+    Endif
+    sDesktop &= "Type=Application" & gb.NewLine
+    sDesktop &= "Version=1.0"
+    
+    File.Save(User.Home & "/.config/autostart/" & Lower(sNomeApp) & ".desktop", sDesktop)
+     
+   Shell "gio set " & User.Home & "/.config/autostart/" & Lower(sNomeApp) & ".desktop metadata::trust true" Wait 
+    
+    Message.Info("O arquivo está ativo na inicialização do sistema!")
+  Else 
+    Message.Error("O arquivo selecionado não foi encontrado!" & gb.NewLine & "Verifique se o arquivo não possui espaço ou caracteres que não possam ser reconhecidos durante a inicialização do sistema.")
+  Endif
+End
+
+Public Sub txtApp_Click()
+  Dialog.Title = "Selecionar Aplicativo"
+  If Dialog.OpenFile() = False Then 
+    txtApp.Text = Dialog.Path
+  Endif
+End
+
+Public Sub mnuCheckUpdate_Click()
+
+  Shell "xdg-open \"https://www.mestredainfo.com.br/p/miautostart.html\""
+
+End
+
+Public Sub mnuSupport_Click()
+
+  Shell "xdg-open \"https://www.mestredainfo.com.br/p/apoie.html\""
+
+End
+
+Public Sub mnuAbout_Click()
+
+  FAbout.ShowDialog()
+
+End

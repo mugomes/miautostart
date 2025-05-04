@@ -1,0 +1,56 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,69,49)
+  Font = Font["12"]
+  Text = ("MIAutoStart")
+  Icon = Picture["miautostart.png"]
+  Resizable = False
+  { Menu1 Menu
+    Text = ("Sobre")
+    { mnuCheckUpdate Menu
+      Text = ("Verificar Atualizações")
+    }
+    { Menu3 Menu
+    }
+    { mnuSupport Menu
+      Text = ("Apoie")
+    }
+    { Menu5 Menu
+    }
+    { mnuAbout Menu
+      Text = ("Sobre MIAutoStart")
+    }
+  }
+  { Label1 Label
+    MoveScaled(1,2,76,4)
+    Font = Font["Bold"]
+    Text = ("Selecione o aplicativo que deseja inicializar com o sistema:")
+  }
+  { txtApp ButtonBox
+    MoveScaled(1,7,66,4)
+    ReadOnly = True
+  }
+  { btnCriar Button
+    MoveScaled(51,37,16,5)
+    Text = ("Criar")
+  }
+  { Frame1 Frame
+    MoveScaled(1,13,66,23)
+    Text = ("Recursos Extras")
+    TextFont = Font["Bold,12"]
+    Alignment = Align.Left
+    { chkTerminal CheckBox
+      MoveScaled(2,15,46,4)
+      Text = ("Terminal")
+    }
+    { txtArgs TextBox
+      MoveScaled(2,9,66,4)
+    }
+    { Label2 Label
+      MoveScaled(2,4,76,4)
+      Font = Font["Bold"]
+      Text = ("Argumentos:")
+    }
+  }
+}

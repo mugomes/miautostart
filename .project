@@ -1,0 +1,24 @@
+# Gambas Project File 3.0
+Title=MIAutoStart
+Startup=FMain
+Icon=miautostart.png
+Version=1.0.0
+Component=gb.image
+Component=gb.gtk3
+Component=gb.form
+Description="MIAutoStart cria aplicativos para inicializar com o sistema no modo usuário.\n\nThe MIAutoStart is under license GPL-2.0-only"
+Authors="Murilo Gomes Julio <contatomestredainfo@gmail.com>"
+TabSize=2
+Language=pt_BR
+Maintainer=Murilo Gomes Julio
+Vendor=mestredainfo
+VendorPrefix=mestredainfo
+Address=contatomestredainfo@gmail.com
+Url=https://www.mestredainfo.com.br
+License=General Public License V2 only
+PackageName=miautostart-1.0.0
+CreateEachDirectory=1
+Packager=1
+Systems=debian
+Menus=debian:"Applications/File Management"
+Groups=debian:"utils"
